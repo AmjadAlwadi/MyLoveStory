@@ -2,6 +2,54 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var cfg = (typeof SITE_CONFIG !== 'undefined') ? SITE_CONFIG : {};
 
+    // ── Password Protection ───────────────────────────────────────────────
+    async function sha256(str) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(str);
+        const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+    }
+
+    var passwordOverlay = document.getElementById('password-overlay');
+    var mainContent = document.getElementById('main-content');
+    var passwordInput = document.getElementById('password-input');
+    var passwordSubmit = document.getElementById('password-submit');
+    var passwordError = document.getElementById('password-error');
+
+    if (passwordOverlay && passwordSubmit && passwordInput) {
+        async function checkPassword() {
+            var inputVal = passwordInput.value;
+            var hash = await sha256(inputVal);
+            if (hash === "8e0693e731391688401c5c1faeed5f170eb9b0f2956c5f5d1ba873c668d87ad9") {
+                passwordOverlay.classList.add('opacity-0');
+                setTimeout(function() {
+                    passwordOverlay.style.display = 'none';
+                }, 500);
+                
+                mainContent.classList.remove('opacity-30', 'blur-sm', 'pointer-events-none');
+                document.body.classList.remove('overflow-hidden');
+            } else {
+                passwordError.classList.remove('hidden');
+                passwordInput.classList.add('border-red-500');
+                passwordInput.classList.remove('border-pink-200');
+            }
+        }
+
+        passwordSubmit.addEventListener('click', checkPassword);
+        passwordInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+        
+        passwordInput.addEventListener('input', function() {
+            passwordError.classList.add('hidden');
+            passwordInput.classList.remove('border-red-500');
+            passwordInput.classList.add('border-pink-200');
+        });
+    }
+
     // ── Helper ────────────────────────────────────────────────────────────
     function setText(id, value) {
         var el = document.getElementById(id);

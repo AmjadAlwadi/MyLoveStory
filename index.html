@@ -25,7 +25,19 @@
   <meta property="og:image" content="https://placehold.co/1200x630/87CEEB/FFFFFF?text=A+Surprise+For+[Name]">
 </head>
 
-<body>
+<body class="overflow-hidden">
+  <!-- Password Overlay -->
+  <div id="password-overlay" class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-md transition-opacity duration-500">
+    <div class="bg-white p-8 rounded-2xl shadow-2xl text-center max-w-sm w-full mx-4 transform transition-transform duration-500 hover:scale-105" dir="ltr">
+      <h2 class="text-3xl font-anime text-sakura mb-4 drop-shadow-sm">Secret Page 🌸</h2>
+      <p class="text-gray-600 mb-6 font-semibold">Please enter the password to view</p>
+      <input type="password" id="password-input" class="w-full px-4 py-3 rounded-xl border-2 border-pink-200 focus:outline-none focus:border-sakura focus:ring-4 focus:ring-pink-100 text-center text-lg tracking-widest mb-4 transition-all" placeholder="••••••••">
+      <p id="password-error" class="text-red-500 text-sm mb-4 hidden font-medium">Incorrect password. Please try again.</p>
+      <button id="password-submit" class="w-full bg-sakura hover:bg-pink-400 text-white font-bold py-3 px-4 rounded-xl shadow-lg hover:shadow-pink-300/50 transition-all duration-300">Unlock</button>
+    </div>
+  </div>
+
+  <div id="main-content" class="opacity-30 blur-sm pointer-events-none transition-all duration-1000">
   <!-- Canvas for the falling cherry blossoms -->
   <canvas id="sakura-canvas"></canvas>
 
@@ -225,6 +237,7 @@
     <p id="footer-line1"></p>
     <p id="footer-line2" class="text-sm opacity-70 mt-2"></p>
   </footer>
+  </div>
 
   <!-- These scripts are for the animations and photo gallery -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
