@@ -74,10 +74,11 @@ body {
 #env-card {
   width: 960px;
   height: 580px;
+  flex-shrink: 0;
   position: relative;
   transform-style: preserve-3d;
   perspective: 5000px;
-  transform: translateX(-25%);
+  transform: translateX(-25%) scale(var(--env-scale, 1));
   transition: transform 1s ease-in-out;
 }
 
@@ -176,7 +177,7 @@ body {
 
 /* ── State classes ─────────────────────────────────────────────── */
 #env-card.env-open-fully {
-  transform: translateX(0%);
+  transform: translateX(0%) scale(var(--env-scale, 1));
 }
 
 #env-card.env-open-fully #env-close,
@@ -396,47 +397,27 @@ body {
 }
 
 /* ── Responsive — scale the card on small screens ──────────────── */
+:root {
+  --env-scale: 1;
+}
+
 @media (max-width: 1024px) {
-  .envelope-stage {
-    min-height: 380px;
-  }
-
-  #env-card {
-    transform: translateX(-25%) scale(0.65);
-    transform-origin: center center;
-  }
-
-  #env-card.env-open-fully {
-    transform: translateX(0%) scale(0.65);
-  }
-
-  #env-card.env-open-half {
-    transform: translateX(-25%) scale(0.65);
-  }
-
-  #env-card.env-close-half {
-    transform: translateX(-25%) scale(0.65);
-  }
+  :root { --env-scale: 0.65; }
+  .envelope-stage { min-height: 380px; }
+  #env-card { transform-origin: center center; }
 }
 
 @media (max-width: 600px) {
-  .envelope-stage {
-    min-height: 280px;
-  }
+  :root { --env-scale: 0.45; }
+  .envelope-stage { min-height: 280px; }
+}
 
-  #env-card {
-    transform: translateX(-25%) scale(0.45);
-  }
+@media (max-width: 480px) {
+  :root { --env-scale: 0.35; }
+  .envelope-stage { min-height: 220px; }
+}
 
-  #env-card.env-open-fully {
-    transform: translateX(0%) scale(0.45);
-  }
-
-  #env-card.env-open-half {
-    transform: translateX(-25%) scale(0.45);
-  }
-
-  #env-card.env-close-half {
-    transform: translateX(-25%) scale(0.45);
-  }
+@media (max-width: 380px) {
+  :root { --env-scale: 0.30; }
+  .envelope-stage { min-height: 200px; }
 }
