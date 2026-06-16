@@ -123,7 +123,7 @@ const SITE_CONFIG = {
       { image: "img/28.jpg", title: "صورة 8", caption: "جيناكم خطابة" },
       { image: "img/29.jpg", title: "صورة 9", caption: "وهل يخفى القمر" },
       { image: "img/30.jpg", title: "صورة 10", caption: "سلطان الطرش" },
-      // { image: "img/1.mp4", title: "صورة 11", caption: "بدنا نروق" },
+      { image: "img/2.mp4", title: "صورة 11", caption: "بدنا نروق" },
 
     ],
   },
