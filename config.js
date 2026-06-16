@@ -2,9 +2,6 @@
  * ============================================================
  *  🎂 إعدادات الموقع — كل شيء تحتاج تعدّله هنا
  * ============================================================
- *  عدّل هذا الملف فقط لتخصيص الموقع بالكامل
- *  بدون ما تحتاج تفتح أي ملف آخر.
- * ============================================================
  */
 
 const SITE_CONFIG = {
@@ -68,7 +65,7 @@ const SITE_CONFIG = {
 
     /** صورة اختيارية تظهر من الخلف عند فتح البطاقة
      *  مثال: "img/photo.png" — اتركيه فارغاً "" لإخفائها */
-    photoPath: "img/11-2.jpg",
+    photoPath: "img/11.jpg",
   },
 
   // ──────────────────────────────────────────────────────────
@@ -116,12 +113,16 @@ const SITE_CONFIG = {
 
     /** البطاقات */
     cards: [
-      { image: "img/1.jpg", title: "صورة ١", caption: "لحظة لا تُنسى 💖" },
-      { image: "img/2.jpg", title: "صورة ٢", caption: "ذكرى جميلة 🌸" },
-      { image: "img/3.jpg", title: "صورة ٣", caption: "أجمل اللحظات ✨" },
-      { image: "img/4.jpg", title: "صورة ٤", caption: "قلوب وأحضان 💕" },
-      { image: "img/5.jpg", title: "صورة ٥", caption: "دايماً مبتسمة 😊" },
-      { image: "img/6.jpg", title: "صورة ٦", caption: "نجمتي 🌟" },
+      { image: "img/1.jpg", title: "صورة 1", caption: "بوسة 💖" },
+      { image: "img/2.jpg", title: "صورة 2", caption: "بوسة ثانية 🌸" },
+      { image: "img/3.jpg", title: "صورة 3", caption: "غريب مافي بوسة" },
+      { image: "img/4.jpg", title: "صورة 4", caption: "اه هاي كمان بوسة 💕" },
+      { image: "img/5.jpg", title: "صورة 5", caption: "اخد راحته بالجامع" },
+      { image: "img/6.jpg", title: "صورة 6", caption: "شمسي اللي دائماً مبتسمة 😊" },
+      { image: "img/27.jpg", title: "صورة 7", caption: "امجد الشرع 🌟" },
+      { image: "img/28.jpg", title: "صورة 8", caption: "جيناكم خطابة 🌟" },
+      { image: "img/29.jpg", title: "صورة 9", caption: "وهل يخفى القمر 🌟" },
+      { image: "img/29.jpg", title: "صورة 10", caption: "سلطان الطرش 🌟" },
     ],
   },
 
@@ -137,18 +138,19 @@ const SITE_CONFIG = {
 
     /** قائمة الصور — image: مسار الصورة، alt: وصف نصي */
     images: [
-      { image: "img/7-2.jpg", alt: "ذكرى 1" },
+      { image: "img/7.jpg", alt: "ذكرى 1" },
       { image: "img/8.jpg", alt: "ذكرى 2" },
-      { image: "img/9-2.jpg", alt: "ذكرى 3" },
+      { image: "img/9.jpg", alt: "ذكرى 3" },
       { image: "img/10.jpg", alt: "ذكرى 4" },
-      // { image: "img/11.jpg", alt: "ذكرى ٥" },
       { image: "img/12.jpg", alt: "ذكرى 5" },
-      // { image: "img/13.jpg", alt: "ذكرى ٧" },
-      { image: "img/14-2.jpg", alt: "ذكرى 6" },
-      // { image: "img/18-2.jpg", alt: "ذكرى ٩" },
+      { image: "img/14.jpg", alt: "ذكرى 6" },
       { image: "img/16.jpg", alt: "ذكرى 7" },
-      { image: "img/17-2.jpg", alt: "ذكرى 8" },
-      // { image: "img/19-2.jpg", alt: "ذكرى ١٢" },
+      { image: "img/17.jpg", alt: "ذكرى 8" },
+      { image: "img/23.jpg", alt: "ذكرى 9" },
+      { image: "img/24.jpg", alt: "ذكرى 10" },
+      { image: "img/25.jpg", alt: "ذكرى 11" },
+      { image: "img/26.jpg", alt: "ذكرى 12" },
+      { image: "img/2.mp4", alt: "ذكرى 13" },
     ],
   },
 
