@@ -1,0 +1,442 @@
+/* ================================================================
+   WEBSITE — Core theme
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@400;600&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F0F8FF;
+  /* Alice Blue */
+  color: #2c3e50;
+}
+
+.font-anime {
+  font-family: 'Mochiy Pop One', sans-serif;
+}
+
+.text-sakura {
+  color: #FFB7C5;
+  /* Cherry Blossom Pink */
+}
+
+.bg-navy {
+  background-color: #2c3e50;
+}
+
+/* Falling petals canvas */
+#sakura-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* Hide scrollbar */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+/* ================================================================
+   ENVELOPE CARD — namespaced styles (env- prefix)
+   Ported from the standalone envelop project and scoped so they
+   don't interfere with the rest of the website.
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css?family=Lobster');
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
+
+/* Stage: centres the card horizontally within the section */
+.envelope-section {
+  overflow: hidden;
+  padding-bottom: 2rem;
+}
+
+.envelope-stage {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Card root ─────────────────────────────────────────────────── */
+#env-card {
+  width: 960px;
+  height: 580px;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 5000px;
+  transform: translateX(-25%);
+  transition: transform 1s ease-in-out;
+}
+
+/* ── Card panels ───────────────────────────────────────────────── */
+#env-card-front,
+#env-card-inside {
+  width: 50%;
+  height: 580px;
+  box-shadow: 2px 2px 30px rgba(0, 0, 0, .25), 0 0 1px rgba(0, 0, 0, .5);
+  position: absolute;
+  left: 50%;
+}
+
+/* Inside panel */
+#env-card-inside {
+  font-size: 1.3em;
+  line-height: 1.4;
+  font-family: 'Lobster', cursive;
+  color: #331717;
+  font-style: italic;
+}
+
+#env-card-inside .env-wrap {
+  background: #FFEFEF;
+  box-shadow: inset 2px 0 1px rgba(0, 0, 0, .05);
+  padding: 1.5em 2.5em;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Front panel */
+#env-card-front {
+  color: #FFDFDF;
+  z-index: 10;
+  background-color: #ee9ca7;
+  background-image: linear-gradient(to bottom, #FF5555 0%, #FF7777 100%);
+  transform-origin: left;
+  transition: transform 1s linear;
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 5000px;
+}
+
+#env-card-front:before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #444;
+  transform: translateZ(-1px);
+}
+
+#env-card-front .env-wrap {
+  padding: 1.5em 2.5em;
+  height: 100%;
+  transition: background 1s linear;
+  backface-visibility: hidden;
+}
+
+/* Front title */
+#env-front-title {
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-style: italic;
+  font-size: 70px;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, .15), 1px 1px 0 #ffc8c8, 2px 2px 0 #ff9696, 3px 3px 0 #ff7d7d;
+  color: #FFF;
+  margin: 0;
+}
+
+/* ── Open / Close buttons ──────────────────────────────────────── */
+#env-card-front button {
+  position: absolute;
+  bottom: 1em;
+  right: -12px;
+  background: #F44;
+  color: #FFF;
+  font-family: 'Lobster', cursive;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 1.5em;
+  padding: .5em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, .25), 0 0 1px rgba(0, 0, 0, .4);
+  transition: background .2s;
+}
+
+#env-card-front button:hover,
+#env-card-front button:focus {
+  background: #F22;
+}
+
+#env-close {
+  display: none;
+}
+
+/* ── State classes ─────────────────────────────────────────────── */
+#env-card.env-open-fully {
+  transform: translateX(0%);
+}
+
+#env-card.env-open-fully #env-close,
+#env-card.env-open-half #env-close {
+  display: inline;
+}
+
+#env-card.env-open-fully #env-open {
+  display: none;
+}
+
+#env-card.env-open-half #env-card-front,
+#env-card.env-close-half #env-card-front {
+  transform: rotateY(-90deg);
+}
+
+#env-card.env-open-half .env-shadow {
+  background-color: rgba(0, 0, 0, .5);
+}
+
+#env-card.env-open-fully #env-card-front,
+#env-card.env-close-half #env-card-front {
+  background: #FFEFEF;
+}
+
+#env-card.env-open-fully #env-card-front {
+  transform: rotateY(-180deg);
+}
+
+#env-card.env-open-fully .env-shadow {
+  background-color: transparent;
+}
+
+/* ── Cake & candles ────────────────────────────────────────────── */
+.env-cake_and_velas {
+  position: absolute;
+  bottom: 25%;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+}
+
+#env-cake {
+  display: block;
+  position: relative;
+  margin: -10em auto 0;
+}
+
+.env-velas {
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 228px;
+  left: 50%;
+  margin-left: -2.4px;
+  margin-top: -8.33px;
+  width: 5px;
+  height: 35px;
+  transform: translateY(-300px);
+  backface-visibility: hidden;
+  animation: env-in 500ms 5s ease-out forwards;
+}
+
+.env-velas:after,
+.env-velas:before {
+  background: rgba(255, 0, 0, .4);
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2.22px;
+}
+
+.env-velas:after {
+  top: 25%;
+  left: 0;
+}
+
+.env-velas:before {
+  top: 45%;
+  left: 0;
+}
+
+.env-fuego {
+  border-radius: 100%;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  margin-left: -2.6px;
+  width: 6.67px;
+  height: 18px;
+}
+
+.env-fuego:nth-child(1) {
+  animation: env-fuego 2.0s 5.5s infinite;
+}
+
+.env-fuego:nth-child(2) {
+  animation: env-fuego 1.5s 5.5s infinite;
+}
+
+.env-fuego:nth-child(3) {
+  animation: env-fuego 1.0s 5.5s infinite;
+}
+
+.env-fuego:nth-child(4) {
+  animation: env-fuego 0.5s 5.5s infinite;
+}
+
+.env-fuego:nth-child(5) {
+  animation: env-fuego 0.2s 5.5s infinite;
+}
+
+@keyframes env-fuego {
+
+  0%,
+  100% {
+    background: rgba(254, 248, 97, .5);
+    box-shadow: 0 0 40px 10px rgba(248, 233, 209, .2);
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    background: rgba(255, 50, 0, .1);
+    box-shadow: 0 0 40px 20px rgba(248, 233, 209, .2);
+    transform: translateY(-20px) scale(0);
+  }
+}
+
+@keyframes env-in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ── Back of the front panel (photo) ──────────────────────────── */
+.env-card-front_inside {
+  position: absolute;
+  inset: 0;
+  height: 70%;
+  width: 80%;
+  margin: auto;
+  backface-visibility: hidden;
+  transform: translateZ(-1px) rotateY(180deg);
+  background-color: #ffefef;
+}
+
+.env-shadow {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  transform: translateZ(-2px) rotateY(180deg);
+  pointer-events: none;
+  transition: background 1s linear;
+}
+
+/* ── Polaroid photo ────────────────────────────────────────────── */
+.env-polaroid {
+  width: 240px;
+  height: 220px;
+  position: absolute;
+  background: #1e1c18;
+  border: 7px solid #f5f5f5;
+  border-bottom: 50px solid #f5f5f5;
+  box-shadow: 0 0 6px -1px #000;
+  overflow: hidden;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: rotate(-5deg);
+  backface-visibility: hidden;
+}
+
+.env-img {
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background-position: center;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 3s ease-in;
+}
+
+#env-card.env-open-fully .env-img {
+  opacity: 1;
+}
+
+/* Fix for LightGallery in RTL mode (prevents black screen on preview) */
+.lg-outer {
+  direction: ltr;
+}
+
+/* ── Letter typography ─────────────────────────────────────────── */
+.env-wishesFont {
+  font-family: 'Indie Flower', cursive;
+  font-weight: 800;
+}
+
+.env-greeting {
+  font-size: 1.2em;
+  margin-bottom: .5em;
+}
+
+.env-signed {
+  margin-top: 1.5em;
+  text-align: center;
+  font-family: 'Indie Flower', cursive;
+  font-weight: bold;
+  font-size: 0.85em;
+}
+
+.env-wrap p {
+  margin-top: 1em;
+}
+
+.env-wrap p:first-child {
+  margin-top: 0;
+}
+
+/* ── Responsive — scale the card on small screens ──────────────── */
+@media (max-width: 1024px) {
+  .envelope-stage {
+    min-height: 380px;
+  }
+
+  #env-card {
+    transform: translateX(-25%) scale(0.65);
+    transform-origin: center center;
+  }
+
+  #env-card.env-open-fully {
+    transform: translateX(0%) scale(0.65);
+  }
+
+  #env-card.env-open-half {
+    transform: translateX(-25%) scale(0.65);
+  }
+
+  #env-card.env-close-half {
+    transform: translateX(-25%) scale(0.65);
+  }
+}
+
+@media (max-width: 600px) {
+  .envelope-stage {
+    min-height: 280px;
+  }
+
+  #env-card {
+    transform: translateX(-25%) scale(0.45);
+  }
+
+  #env-card.env-open-fully {
+    transform: translateX(0%) scale(0.45);
+  }
+
+  #env-card.env-open-half {
+    transform: translateX(-25%) scale(0.45);
+  }
+
+  #env-card.env-close-half {
+    transform: translateX(-25%) scale(0.45);
+  }
+}
