@@ -21,22 +21,29 @@ document.addEventListener('DOMContentLoaded', function () {
         bgAudio.loop = true;
         
         var playMusic = function() {
-            bgAudio.play().catch(function(e) {
-                // Ignore autoplay block errors
-            });
-            document.removeEventListener('click', playMusic);
-            document.removeEventListener('touchstart', playMusic);
-            document.removeEventListener('scroll', playMusic);
+            var playPromise = bgAudio.play();
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    // Successfully started playing, we can remove listeners now
+                    document.removeEventListener('click', playMusic);
+                    document.removeEventListener('touchstart', playMusic);
+                    document.removeEventListener('keydown', playMusic);
+                }).catch(function(e) {
+                    // Still blocked by browser, wait for another interaction
+                });
+            }
         };
 
-        // Try to play immediately
-        bgAudio.play().catch(function() {
-            // Browsers block autoplay without user interaction.
-            // Listen for the first click, touch, or scroll to start the music.
-            document.addEventListener('click', playMusic);
-            document.addEventListener('touchstart', playMusic);
-            document.addEventListener('scroll', playMusic, { once: true });
-        });
+        // Try playing immediately
+        var initialPlay = bgAudio.play();
+        if (initialPlay !== undefined) {
+            initialPlay.catch(function() {
+                // Autoplay blocked, wait for a valid user interaction
+                document.addEventListener('click', playMusic);
+                document.addEventListener('touchstart', playMusic);
+                document.addEventListener('keydown', playMusic);
+            });
+        }
     }
 
     // ── Hero ──────────────────────────────────────────────────────────────
