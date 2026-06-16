@@ -119,10 +119,12 @@ const SITE_CONFIG = {
       { image: "img/4.jpg", title: "صورة 4", caption: "اه هاي كمان بوسة 💕" },
       { image: "img/5.jpg", title: "صورة 5", caption: "اخد راحته بالجامع" },
       { image: "img/6.jpg", title: "صورة 6", caption: "شمسي اللي دائماً مبتسمة 😊" },
-      { image: "img/27.jpg", title: "صورة 7", caption: "امجد الشرع 🌟" },
-      { image: "img/28.jpg", title: "صورة 8", caption: "جيناكم خطابة 🌟" },
-      { image: "img/29.jpg", title: "صورة 9", caption: "وهل يخفى القمر 🌟" },
-      { image: "img/29.jpg", title: "صورة 10", caption: "سلطان الطرش 🌟" },
+      { image: "img/27.jpg", title: "صورة 7", caption: "امجد الشرع" },
+      { image: "img/28.jpg", title: "صورة 8", caption: "جيناكم خطابة" },
+      { image: "img/29.jpg", title: "صورة 9", caption: "وهل يخفى القمر" },
+      { image: "img/30.jpg", title: "صورة 10", caption: "سلطان الطرش" },
+      // { image: "img/1.mp4", title: "صورة 11", caption: "بدنا نروق" },
+
     ],
   },
 
@@ -150,7 +152,6 @@ const SITE_CONFIG = {
       { image: "img/24.jpg", alt: "ذكرى 10" },
       { image: "img/25.jpg", alt: "ذكرى 11" },
       { image: "img/26.jpg", alt: "ذكرى 12" },
-      { image: "img/2.mp4", alt: "ذكرى 13" },
     ],
   },
 

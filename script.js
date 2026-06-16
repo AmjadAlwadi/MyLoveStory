@@ -98,12 +98,22 @@ document.addEventListener('DOMContentLoaded', function () {
     // ── Hall of Fame ──────────────────────────────────────────────────────
     var hof = cfg.hallOfFame || {};
     setText('hof-title', hof.sectionTitle || '');
-    (hof.cards || []).forEach(function (card, i) {
-        setAttr('hof-img-' + i, 'src', card.image);
-        setAttr('hof-img-' + i, 'alt', card.title || '');
-        setText('hof-title-'   + i, card.title   || '');
-        setText('hof-caption-' + i, card.caption || '');
-    });
+    var hofContainer = document.getElementById('hof-cards-container');
+    if (hofContainer && Array.isArray(hof.cards) && hof.cards.length) {
+        var hofHtml = '';
+        hof.cards.forEach(function (card, i) {
+            var delay = (i % 6 + 1) * 100;
+            hofHtml += 
+                '<div class="snap-center flex-shrink-0 w-10/12 sm:w-1/2 md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="' + delay + '">' +
+                  '<div class="bg-white p-6 rounded-lg shadow-lg text-center h-full" dir="rtl">' +
+                    '<img src="' + card.image + '" alt="' + (card.title || '') + '" class="w-full h-80 object-cover rounded-md mb-4">' +
+                    '<h3 class="text-2xl font-anime text-sakura">' + (card.title || '') + '</h3>' +
+                    '<p class="mt-2">' + (card.caption || '') + '</p>' +
+                  '</div>' +
+                '</div>';
+        });
+        hofContainer.innerHTML = hofHtml;
+    }
 
     // ── Gallery (built dynamically from config) ───────────────────────────
     var gal = cfg.gallery || {};
@@ -176,13 +186,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var scrollRightBtn= document.getElementById('scroll-right-btn');
     if (scroller && scrollLeftBtn && scrollRightBtn) {
         var firstCard = scroller.querySelector('.snap-center');
-        var cardWidth = firstCard.offsetWidth + parseInt(getComputedStyle(firstCard.parentElement).gap);
-        scrollRightBtn.addEventListener('click', function () {
-            scroller.scrollBy({ left: cardWidth, behavior: 'smooth' });
-        });
-        scrollLeftBtn.addEventListener('click', function () {
-            scroller.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-        });
+        if (firstCard) {
+            var cardWidth = firstCard.offsetWidth + parseInt(getComputedStyle(firstCard.parentElement).gap || '0');
+            scrollRightBtn.addEventListener('click', function () {
+                scroller.scrollBy({ left: cardWidth, behavior: 'smooth' });
+            });
+            scrollLeftBtn.addEventListener('click', function () {
+                scroller.scrollBy({ left: -cardWidth, behavior: 'smooth' });
+            });
+        }
     }
 
     // ── Sakura Petal Animation ────────────────────────────────────────────
