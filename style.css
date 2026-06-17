@@ -4,7 +4,8 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Poppins:wght@400;600&display=swap');
 
-html, body {
+html,
+body {
   overflow-x: hidden;
   max-width: 100vw;
 }
@@ -62,7 +63,7 @@ body {
 
 /* Stage: centres the card horizontally within the section */
 .envelope-section {
-  overflow: hidden;
+  overflow: visible;
   padding-bottom: 2rem;
 }
 
@@ -407,22 +408,45 @@ body {
 }
 
 @media (max-width: 1024px) {
-  :root { --env-scale: 0.65; }
-  .envelope-stage { min-height: 380px; }
-  #env-card { transform-origin: center center; }
+  :root {
+    --env-scale: 0.65;
+  }
+
+  .envelope-stage {
+    min-height: 380px;
+  }
+
+  #env-card {
+    transform-origin: center center;
+  }
 }
 
 @media (max-width: 600px) {
-  :root { --env-scale: 0.45; }
-  .envelope-stage { min-height: 280px; }
+  :root {
+    --env-scale: 0.45;
+  }
+
+  .envelope-stage {
+    min-height: 280px;
+  }
 }
 
 @media (max-width: 480px) {
-  :root { --env-scale: 0.35; }
-  .envelope-stage { min-height: 220px; }
+  :root {
+    --env-scale: 0.35;
+  }
+
+  .envelope-stage {
+    min-height: 220px;
+  }
 }
 
 @media (max-width: 380px) {
-  :root { --env-scale: 0.30; }
-  .envelope-stage { min-height: 200px; }
+  :root {
+    --env-scale: 0.30;
+  }
+
+  .envelope-stage {
+    min-height: 200px;
+  }
 }
