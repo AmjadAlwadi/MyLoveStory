@@ -153,11 +153,11 @@ document.addEventListener('DOMContentLoaded', function () {
             var delay = (i % 6 + 1) * 100;
             var isVideo = card.image && card.image.toLowerCase().endsWith('.mp4');
             var mediaHtml = isVideo 
-                ? '<video autoplay loop muted playsinline src="' + card.image + '" class="w-full h-56 sm:h-64 md:h-80 object-contain md:object-cover bg-gray-100 rounded-md mb-4"></video>'
-                : '<img src="' + card.image + '" alt="' + (card.title || '') + '" class="w-full h-56 sm:h-64 md:h-80 object-contain md:object-cover bg-gray-100 rounded-md mb-4">';
+                ? '<video autoplay loop muted playsinline src="' + card.image + '" class="w-full h-64 object-cover rounded-md mb-4"></video>'
+                : '<img src="' + card.image + '" alt="' + (card.title || '') + '" class="w-full h-64 object-cover rounded-md mb-4">';
 
             hofHtml += 
-                '<div class="snap-center flex-shrink-0 w-3/5 sm:w-1/2 md:w-1/3 lg:w-1/4" data-aos="fade-up" data-aos-delay="' + delay + '">' +
+                '<div class="snap-center flex-shrink-0 w-44 sm:w-52 md:w-64 lg:w-72" data-aos="fade-up" data-aos-delay="' + delay + '">' +
                   '<div class="bg-white p-6 rounded-lg shadow-lg text-center h-full" dir="rtl">' +
                     mediaHtml +
                     '<h3 class="text-2xl font-anime text-sakura">' + (card.title || '') + '</h3>' +
